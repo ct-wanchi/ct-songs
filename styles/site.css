@@ -1,0 +1,218 @@
+body {
+    font-family: Lustria, "Noto Serif JP", -apple-system, BlinkMacSystemFont, 游ゴシック体, YuGothic, "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 8px;
+    height: calc(100vh - 120px);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: rgb(183, 202, 216);
+}
+
+#song-list {
+    width: 30%;
+    max-width: 30%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(183, 202, 216);
+    border-top: 1px solid rgb(103, 147, 172);
+    border-bottom: 1px solid rgb(103, 147, 172);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#setlist {
+    flex: 1;
+    max-width: 70%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(183, 202, 216);
+    border-top: 1px solid rgb(103, 147, 172);
+    border-bottom: 1px solid rgb(103, 147, 172);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#song-list::-webkit-scrollbar,
+#setlist::-webkit-scrollbar {
+    width: 8px;
+}
+
+#song-list::-webkit-scrollbar-thumb,
+#setlist::-webkit-scrollbar-thumb {
+    background-color: rgb(103, 147, 172);
+    border-radius: 4px;
+}
+
+#song-list::-webkit-scrollbar-thumb:hover,
+#setlist::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(183, 202, 216);
+}
+
+#song-list::-webkit-scrollbar-track,
+#setlist::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    border-top: 1px solid rgb(103, 147, 172);
+    border-bottom: 1px solid rgb(103, 147, 172);
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    box-shadow: none;
+    cursor: grab;
+    position: relative;
+}
+
+.card .drag-icon {
+    margin-left: auto;
+    font-family: 'Material Icons';
+    font-size: 20px;
+    color: #666;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.card:hover .drag-icon {
+    opacity: 1;
+}
+
+.card img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.card a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.card a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: url('images/yt_icon_rgb.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card a:hover::after {
+    opacity: 1;
+}
+
+.card a:hover img {
+    opacity: 0.5;
+}
+
+#setlist .card .number {
+    font-weight: bold;
+    color: rgb(103, 147, 172);
+    margin-right: 10px;
+}
+
+#song-list .card .number {
+    display: none;
+}
+
+.draggable-mirror .number {
+    display: none;
+}
+
+.card.draggable-mirror {
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+.draggable-mirror {
+    transition: none !important;
+}
+
+.card.dropped {
+    background-color: #e0e0e0;
+    opacity: 0.8;
+}
+
+.setlist {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffe6f2;
+    border: 2px dashed #ff99cc;
+    border-radius: 10px;
+    width: 80%;
+    min-height: 200px;
+}
+
+.setlist h2 {
+    text-align: center;
+    color: rgb(103, 147, 172);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
