@@ -19,62 +19,64 @@ header {
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     padding: 12px;
     gap: 8px;
-    height: calc(100vh - 120px);
+    height: auto;
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow-y: hidden;
     background-color: rgb(183, 202, 216);
+}
+
+#song-list,
+#setlist {
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: rgb(183, 202, 216);
+    border-top: 1px solid rgb(103, 147, 172);
+    border-bottom: 1px solid rgb(103, 147, 172);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #song-list {
-    width: 30%;
-    max-width: 30%;
-    max-height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: rgb(183, 202, 216);
-    border-top: 1px solid rgb(103, 147, 172);
-    border-bottom: 1px solid rgb(103, 147, 172);
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-    padding: 0;
-    gap: 0;
-    box-shadow: none;
+    width: 100%;
+    max-height: 240px;
+    padding: 8px;
     display: flex;
-    flex-direction: column;
-    gap: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    user-select: none;
 }
 
 #setlist {
-    flex: 1;
-    max-width: 70%;
-    max-height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: rgb(183, 202, 216);
-    border-top: 1px solid rgb(103, 147, 172);
-    border-bottom: 1px solid rgb(103, 147, 172);
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
+    min-height: 100px;
     padding: 0;
-    gap: 0;
-    box-shadow: none;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
+
+#setlist-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
 
 #song-list::-webkit-scrollbar,
 #setlist::-webkit-scrollbar {
-    width: 8px;
+    width: 14px;
 }
 
 #song-list::-webkit-scrollbar-thumb,
@@ -101,118 +103,101 @@ header {
     background-color: #ffffff;
     border-top: 1px solid rgb(103, 147, 172);
     border-bottom: 1px solid rgb(103, 147, 172);
-    border-left: none;
-    border-right: none;
     margin: 0;
     padding: 10px;
     width: 100%;
     box-shadow: none;
     cursor: grab;
     position: relative;
+
+    .drag-icon {
+        margin-left: auto;
+        font-family: 'Material Icons';
+        font-size: 20px;
+        color: #666;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    &:hover .drag-icon {
+        opacity: 1;
+    }
+
+    img {
+        margin-right: 10px;
+    }
 }
 
-.card .drag-icon {
-    margin-left: auto;
-    font-family: 'Material Icons';
-    font-size: 20px;
-    color: #666;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    height: 100%;
-    box-sizing: border-box;
+#setlist .card {
+    padding: 5px;
+    border: 1px solid rgb(103, 147, 172);
+    border-radius: 4px;
+    justify-content: flex-start;
+
+    .drag-icon {
+        font-size: 24px;
+        justify-content: flex-start;
+    }
+
+    .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        .number {
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(103, 147, 172);
+        }
+    
+        img {
+            width: 80px;
+            height: auto;
+        }
+
+        .card-shortName {
+            display: none;
+        }
+    
+        .card-title {
+            font-size: 20px;
+            text-align: center;
+            align-items: center;
+            display: flex; /* フレックスボックスを使用 */
+        }
+    }
 }
 
-.card:hover .drag-icon {
-    opacity: 1;
+#song-list .card {
+    width: auto;
+    padding: 5px;
+    
+    .drag-icon {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        img {
+            width: 80px;
+            margin-bottom: 5px;
+        }
+        .card-shortName {
+            font-size: 14px;
+        }
+        .card-title {
+            display: none;
+        }
+    }
 }
 
-.card img {
-    width: 60px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.card a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    position: relative;
-    display: inline-block;
-}
-
-.card a:hover {
-    text-decoration: underline;
-}
-
-.card a::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background: url('images/yt_icon_rgb.png') no-repeat center center;
-    background-size: contain;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card a:hover::after {
-    opacity: 1;
-}
-
-.card a:hover img {
-    opacity: 0.5;
-}
-
-#setlist .card .number {
-    font-weight: bold;
-    color: rgb(103, 147, 172);
-    margin-right: 10px;
-}
-
-#song-list .card .number {
-    display: none;
-}
-
-.draggable-mirror .number {
-    display: none;
-}
-
-.card.draggable-mirror {
-    opacity: 0.8;
-    box-shadow: none;
-}
-
-.draggable-mirror {
-    transition: none !important;
-}
-
-.card.dropped {
-    background-color: #e0e0e0;
-    opacity: 0.8;
-}
-
-.setlist {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffe6f2;
-    border: 2px dashed #ff99cc;
-    border-radius: 10px;
-    width: 80%;
-    min-height: 200px;
-}
-
-.setlist h2 {
-    text-align: center;
-    color: rgb(103, 147, 172);
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}

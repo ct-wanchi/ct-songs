@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>セットリスト作成</title>
+    <title>きゃんちゅー専用★セットリストメーカー</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/site.css"> <!-- site.css への参照を追加 -->
+    <link rel="stylesheet" href="./styles/site.css">
 </head>
+
 <body>
-    <header>セットリスト作成</header>
+    <header>
+        きゃんちゅー専用★セットリストメーカー
+        <button id="create-setlist-button">作成</button>
+    </header>
     <div class="container">
-        <div id="song-list"></div> <!-- 左側の候補リスト -->
+        <div id="song-list">
+        </div>
+        <div id="setlist-container">
+            <input type="text" id="setlist-title" value="My Setlist" />
         <div id="setlist">
-            <h2>セットリスト</h2> <!-- 右側のセットリスト -->
+        </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.legacy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>
     <script src="./scripts/main.js"></script>
     <script src="./scripts/songs.js"></script>
+
 </body>
+
 </html>
