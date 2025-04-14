@@ -11,7 +11,7 @@ header {
     padding: 20px;
     background-color: rgb(103, 147, 172);
     color: #ffffff;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -64,15 +64,13 @@ header {
 
 #setlist-container {
     width: 100%;
-    max-width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
 }
-
-
 
 #song-list::-webkit-scrollbar,
 #setlist::-webkit-scrollbar {
@@ -108,12 +106,12 @@ header {
     width: 100%;
     box-shadow: none;
     cursor: grab;
-    position: relative;
+    position: relative; /* アイコンをカード内で配置するために必要 */
 
     .drag-icon {
         margin-left: auto;
         font-family: 'Material Icons';
-        font-size: 20px;
+        font-size: 18px;
         color: #666;
         opacity: 0.6;
         transition: opacity 0.3s ease;
@@ -123,7 +121,7 @@ header {
         height: 100%;
         box-sizing: border-box;
     }
-
+    
     &:hover .drag-icon {
         opacity: 1;
     }
@@ -131,8 +129,60 @@ header {
     img {
         margin-right: 10px;
     }
+
+    a {
+        position: relative;
+    }
+    
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30px;
+        height: 30px;
+        background: url('images/yt_icon_rgb.png') no-repeat center center;
+        background-size: contain;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    a:hover .play-icon {
+        opacity: 1;
+    }
 }
 
+#setlist-header {
+    font-size: 16px;
+    width:100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-items: center;
+    display: flex; /* フレックスボックスを使用 */
+}
+
+#setlist-title {
+    font-size: 16px;
+    width:100%;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+#create-setlist-button{
+    margin-left: 2px;
+    width: 100px;
+    padding: 10px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: 1px solid rgb(183, 202, 216);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
 #setlist .card {
     padding: 5px;
     border: 1px solid rgb(103, 147, 172);
@@ -140,7 +190,7 @@ header {
     justify-content: flex-start;
 
     .drag-icon {
-        font-size: 24px;
+        font-size: 20px;
         justify-content: flex-start;
     }
 
@@ -155,16 +205,16 @@ header {
         }
     
         img {
-            width: 80px;
+            width: 64px;
             height: auto;
         }
-
+        
         .card-shortName {
             display: none;
         }
     
         .card-title {
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
             align-items: center;
             display: flex; /* フレックスボックスを使用 */
@@ -174,8 +224,8 @@ header {
 
 #song-list .card {
     width: auto;
-    padding: 5px;
-    
+    padding: 6px 2px;
+    border-right: dotted 1px rgb(103, 147, 172);
     .drag-icon {
         font-size: 20px;
         margin-right: 5px;
@@ -187,13 +237,13 @@ header {
         align-items: center;
         text-align: center;
         width: 100%;
-
+        position: relative; /* アイコンを中央に配置するために必要 */
         img {
-            width: 80px;
-            margin-bottom: 5px;
+            width: 64px;
+            margin-bottom: 2px;
         }
         .card-shortName {
-            font-size: 14px;
+            font-size: 12px;
         }
         .card-title {
             display: none;
@@ -201,3 +251,104 @@ header {
     }
 }
 
+.card-content img {
+    transition: transform 0.3s ease, opacity 0.3s ease; /* 拡大と半透明のアニメーション */
+}
+
+.card-content img:hover {
+    transform: scale(1.1); /* 画像を少し大きくする */
+    opacity: 0.8; /* 画像を半透明にする */
+}
+
+.card-number {
+    margin-right: 8px; /* 数字と画像の間に余白を追加 */
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(103, 147, 172);
+}
+
+.encore {
+    background-color: rgb(103, 147, 172); /* アクセントカラー */
+    color: #ffffff;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(183, 202, 216);
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 8px;
+
+    .card-shortName{
+        padding-right: 4px;
+    }
+}
+#setlist .card.encore{
+    height: 30px;
+}
+
+#share-setlist-button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#share-setlist-button:hover {
+    background-color: rgb(83, 127, 152);
+}
+
+#share-x-button,
+#share-facebook-button,
+#share-native-button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#share-x-button:hover {
+    background-color: rgb(29, 161, 242); /* Xのブランドカラー */
+}
+
+#share-facebook-button:hover {
+    background-color: rgb(59, 89, 152); /* Facebookのブランドカラー */
+}
+
+#share-native-button:hover {
+    background-color: rgb(83, 127, 152);
+}
+
+#share-buttons button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#share-buttons button:hover {
+    background-color: rgb(83, 127, 152);
+}
+
+#share-buttons .material-icons {
+    font-size: 18px;
+}

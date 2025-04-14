@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>きゃんちゅー専用★セットリストメーカー</title>
+    <title>CANDY TUNE Set List Maker</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/site.css">
 </head>
 
 <body>
     <header>
-        きゃんちゅー専用★セットリストメーカー
-        <button id="create-setlist-button">作成</button>
+        CANDY TUNE Set List Maker
     </header>
     <div class="container">
         <div id="song-list">
         </div>
         <div id="setlist-container">
-            <input type="text" id="setlist-title" value="My Setlist" />
-        <div id="setlist">
-        </div>
+            <div id="setlist-header">
+                <input type="text" id="setlist-title" value="My Setlist" />
+                <button id="create-setlist-button">作成</button>
+            </div>
+            <div id="setlist"></div>
+        
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>

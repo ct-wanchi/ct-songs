@@ -2,46 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const songList = document.getElementById("song-list");
     const setlist = document.getElementById("setlist");
 
-    // 楽曲カードを生成
-    if (!ctSongs || !Array.isArray(ctSongs)) {
-        console.error("ctSongs is not defined or not an array.");
-        return;
-    }
-
-    // song-list用カードを作成する関数
-    function createSongListCard(song) {
-        const songListCard = document.createElement("div");
-        songListCard.className = "card";
-        songListCard.dataset.songId = song.id; // IDをデータ属性として保存
-        songListCard.innerHTML = `
-            <span class="drag-icon">drag_indicator</span>
-            <div class="card-content">
-                <img src="${song.image}" alt="${song.title}">
-                <span class="card-shortName">${song.shortName}</span>
-                <span class="card-title">${song.title}</span>
-            </div>
-        `;
-        return songListCard;
-    }
-
-    // song-listにカードを追加
-    ctSongs.forEach(song => {
-        const songListCard = createSongListCard(song);
-        songList.appendChild(songListCard);
-    });
-
-
     Sortable.create(songList, {
         group: {
             name: 'shared',
             pull: 'clone',
             put: true
         },
-        handle:'.card',
+        handle: '.card',
         draggable: '.card',
-        sort: false // 順序を固定
+        sort: false,
+        onAdd: (evt) => {
+            if (evt.from === setlist) {
+                evt.item.remove(); // setlistからsongListに移動した場合は削除
+            }
+        }
     });
-
 
     Sortable.create(setlist, {
         group: {
@@ -52,13 +27,77 @@ document.addEventListener("DOMContentLoaded", () => {
         sort: true,
         draggable: '.card',
         handle: '.card',
-        onRemove: (evt) => {
-            // setlistからアイテムが削除された場合の処理
-            const removedElement = evt.item;
-            removedElement.remove(); // 完全に削除
-        }
+        onAdd: updateCardNumbers,
+        onChange: updateCardNumbers,
+        onEnd: updateCardNumbers
     });
 
-    // 初期状態ではsetlistを空にする
+    ctSongs.forEach(song => {
+        songList.appendChild(createSongListCard(song));
+    });
+    songList.appendChild(createEncoreCard());
     setlist.innerHTML = "";
+
+    const createSetlistButton = document.getElementById("create-setlist-button");
+    createSetlistButton.addEventListener("click", () => {
+        const setlistTitle = document.getElementById("setlist-title").value;
+        const setlistItems = Array.from(setlist.querySelectorAll('.card')).map(card => parseInt(card.dataset.songId, 10));
+
+        const setlistData = {
+            title: setlistTitle,
+            songs: setlistItems
+        };
+
+        const compressedData = LZString.compressToEncodedURIComponent(JSON.stringify(setlistData));
+        window.location.href = `setlist.html?data=${compressedData}`;
+    });
+
+    function createSongListCard(song) {
+        const songListCard = document.createElement("div");
+        songListCard.className = "card";
+        songListCard.dataset.songId = song.id;
+        songListCard.innerHTML = `
+            <span class="drag-icon">drag_indicator</span>
+            <span class="card-number"></span>
+            <div class="card-content">
+                <a href="${song.link}" target="_blank" rel="noopener noreferrer">
+                    <img src="${song.image}" alt="${song.title}">
+                    <span class="play-icon"></span>
+                </a>
+                <span class="card-shortName">${song.shortName}</span>
+                <span class="card-title">${song.title}</span>
+            </div>
+        `;
+        return songListCard;
+    }
+
+    function createEncoreCard() {
+        const songListCard = document.createElement("div");
+        songListCard.className = "card encore";
+        songListCard.dataset.songId = 999;
+        songListCard.innerHTML = `
+            <span class="drag-icon">drag_indicator</span>
+            <div class="card-content">
+                <span class="card-shortName">Encore</span>
+                <span class="card-title">Encore</span>
+            </div>
+        `;
+        return songListCard;
+    }
+
+    function updateCardNumbers() {
+        const cards = setlist.querySelectorAll('.card');
+        let encoreCardFound = false;
+        cards.forEach((card, index) => {
+            if (card.dataset.songId === "999") {
+                encoreCardFound = true;
+                return;
+            }
+            const numberElement = card.querySelector('.card-number');
+            if (numberElement) {
+                const formattedNumber = (encoreCardFound ? index : index + 1).toString().padStart(2, '0') + '.';
+                numberElement.textContent = formattedNumber;
+            }
+        });
+    }
 });
