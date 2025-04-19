@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pull: 'clone',
             put: true
         },
-        handle: '.card',
+        handle: '.drag-icon',
         draggable: '.card',
         sort: false,
         onAdd: (evt) => {

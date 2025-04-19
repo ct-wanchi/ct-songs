@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,25 @@
     <link rel="stylesheet" href="./styles/site.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
-    <header id="setlist-header"></header>
-    <div id="setlist-container">
-        <div id="setlist"></div>
-        <div id="share-buttons">
-            <button id="share-setlist-button">
-                <span class="material-icons">link</span>URLをコピー
-            </button>
-            <button id="share-native-button">
-                <span class="material-icons">upload</span>共有
-            </button>
+    <header id="sharelist-header"></header>
+    <div class="container">
+        <div id="sharelist-container">
+            <div id="sharelist"></div>
+            <div id="share-buttons">
+                <button id="share-setlist-button">
+                    <span class="material-icons">link</span>URLをコピー
+                </button>
+                <button id="share-native-button">
+                    <span class="material-icons">upload</span>共有
+                </button>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>
     <script src="./scripts/songs.js"></script>
     <script src="./scripts/setlist.js"></script>
 </body>
+
 </html>

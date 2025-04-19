@@ -8,19 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const setlistData = JSON.parse(LZString.decompressFromEncodedURIComponent(compressedData));
-    const setlistHeader = document.getElementById("setlist-header");
-    const setlistContainer = document.getElementById("setlist");
+    const setlistHeader = document.getElementById("sharelist-header");
+    const setlistContainer = document.getElementById("sharelist");
 
     setlistHeader.textContent = setlistData.title;
     let number = 1;
     setlistData.songs.forEach(songId => {
         const song = ctSongs.find(s => s.id === songId);
         if (song) {
+            const formattedNumber = (number++).toString().padStart(2, '0') + '.';
             const songElement = document.createElement("div");
             songElement.className = "card";
             songElement.innerHTML = `
-                <span class="card-number">${number++}</span>
                 <div class="card-content">
+                    <span class="card-number">${formattedNumber}</span>
                     <a href="${song.link}" target="_blank" rel="noopener noreferrer">
                     <img src="${song.image}" alt="${song.title}">
                     <span class="play-icon"></span>
