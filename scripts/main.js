@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
         draggable: '.card',
         sort: false,
         onAdd: (evt) => {
-            if (evt.from === setlist) {
-                evt.item.remove(); // setlistからsongListに移動した場合は削除
-            }
+            //if (evt.from === setlist) {
+                evt.item.remove();
+            //}
         }
     });
 
@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         songListCard.dataset.songId = song.id;
         songListCard.innerHTML = `
             <span class="drag-icon">drag_indicator</span>
-            <span class="card-number"></span>
             <div class="card-content">
+                <span class="card-number"></span>
                 <a href="${song.link}" target="_blank" rel="noopener noreferrer">
                     <img src="${song.image}" alt="${song.title}">
                     <span class="play-icon"></span>

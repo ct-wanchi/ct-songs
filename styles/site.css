@@ -1,6 +1,6 @@
 body {
     font-family: Lustria, "Noto Serif JP", -apple-system, BlinkMacSystemFont, 游ゴシック体, YuGothic, "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
-    background-color: #ffffff;
+    background-color: rgb(183, 202, 216);
     color: #000000;
     margin: 0;
     padding: 0;
@@ -9,8 +9,7 @@ body {
 header {
     text-align: center;
     padding: 20px;
-    background-color: rgb(103, 147, 172);
-    color: #ffffff;
+    background-color: rgb(183, 202, 216);
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -33,44 +32,24 @@ header {
 
 #song-list,
 #setlist {
-    max-width: 100%;
-    overflow-x: hidden;
-    background-color: rgb(183, 202, 216);
+    background-color: #ffffff;
     border-top: 1px solid rgb(103, 147, 172);
     border-bottom: 1px solid rgb(103, 147, 172);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 #song-list {
-    width: 100%;
-    max-height: 240px;
-    padding: 8px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 10px;
-    box-sizing: border-box;
-    user-select: none;
+    overflow-y: auto;
+    padding: 8px;
+    padding-right: 20px;
+    width: 95%;
+    max-height: 200px;
 }
 
-#setlist {
-    min-height: 100px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-#setlist-container {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
 
 #song-list::-webkit-scrollbar,
 #setlist::-webkit-scrollbar {
@@ -94,6 +73,32 @@ header {
     border-radius: 4px;
 }
 
+
+#setlist {
+    min-height: 100px;
+    overflow-x: hidden;
+    padding: 0;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &:empty{
+        border: 2px dashed rgb(103, 147, 172);
+    }
+}
+
+#setlist-container {
+    width: 95%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+
 .card {
     display: flex;
     flex-direction: row;
@@ -102,11 +107,8 @@ header {
     border-top: 1px solid rgb(103, 147, 172);
     border-bottom: 1px solid rgb(103, 147, 172);
     margin: 0;
-    padding: 10px;
-    width: 100%;
-    box-shadow: none;
     cursor: grab;
-    position: relative; /* アイコンをカード内で配置するために必要 */
+    position: relative;
 
     .drag-icon {
         margin-left: auto;
@@ -120,58 +122,64 @@ header {
         padding: 0 5px;
         height: 100%;
         box-sizing: border-box;
-    }
-    
-    &:hover .drag-icon {
-        opacity: 1;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
-    img {
-        margin-right: 10px;
-    }
+    .card-content {
+        img {
+            margin-right: 10px;
 
-    a {
-        position: relative;
-    }
-    
-    .play-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 30px;
-        height: 30px;
-        background: url('images/yt_icon_rgb.png') no-repeat center center;
-        background-size: contain;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-    
-    a:hover .play-icon {
-        opacity: 1;
+            &:hover {
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        a {
+            position: relative;
+
+            .play-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: url('images/yt_icon_rgb.png') no-repeat center center;
+                background-size: contain;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
+            }
+        }
     }
 }
 
-#setlist-header {
+#setlist-footer {
     font-size: 16px;
-    width:100%;
+    width: 100%;
+    max-width: 600px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     text-align: center;
     align-items: center;
-    display: flex; /* フレックスボックスを使用 */
+    display: flex;
 }
 
 #setlist-title {
     font-size: 16px;
-    width:100%;
+    width: 100%;
     padding: 10px;
     text-align: center;
     align-items: center;
     display: flex;
 }
-#create-setlist-button{
+
+#create-setlist-button {
     margin-left: 2px;
     width: 100px;
     padding: 10px;
@@ -183,6 +191,7 @@ header {
     font-size: 14px;
     transition: background-color 0.3s ease;
 }
+
 #setlist .card {
     padding: 5px;
     border: 1px solid rgb(103, 147, 172);
@@ -198,34 +207,41 @@ header {
         flex: 1;
         display: flex;
         flex-direction: row;
-        .number {
+
+        .card-number {
             font-size: 14px;
             font-weight: bold;
             color: rgb(103, 147, 172);
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
         }
-    
+
         img {
             width: 64px;
             height: auto;
+
         }
-        
+
         .card-shortName {
             display: none;
         }
-    
+
         .card-title {
             font-size: 18px;
             text-align: center;
             align-items: center;
-            display: flex; /* フレックスボックスを使用 */
+            display: flex;
         }
     }
 }
 
 #song-list .card {
+    height: fit-content;
     width: auto;
     padding: 6px 2px;
     border-right: dotted 1px rgb(103, 147, 172);
+
     .drag-icon {
         font-size: 20px;
         margin-right: 5px;
@@ -237,38 +253,33 @@ header {
         align-items: center;
         text-align: center;
         width: 100%;
-        position: relative; /* アイコンを中央に配置するために必要 */
+        position: relative;
+
         img {
             width: 64px;
             margin-bottom: 2px;
         }
+
+        .card-number {
+            display: none;
+        }
+
         .card-shortName {
             font-size: 12px;
         }
+
         .card-title {
             display: none;
         }
     }
 }
 
-.card-content img {
-    transition: transform 0.3s ease, opacity 0.3s ease; /* 拡大と半透明のアニメーション */
-}
-
-.card-content img:hover {
-    transform: scale(1.1); /* 画像を少し大きくする */
-    opacity: 0.8; /* 画像を半透明にする */
-}
-
-.card-number {
-    margin-right: 8px; /* 数字と画像の間に余白を追加 */
-    font-size: 14px;
-    font-weight: bold;
-    color: rgb(103, 147, 172);
+.card-content img:hover+.play-icon {
+    opacity: 1;
 }
 
 .encore {
-    background-color: rgb(103, 147, 172); /* アクセントカラー */
+    background-color: rgb(103, 147, 172);
     color: #ffffff;
     height: 42px;
     display: flex;
@@ -280,11 +291,16 @@ header {
     width: 60%;
     margin: 8px;
 
-    .card-shortName{
+    .card-shortName {
         padding-right: 4px;
     }
+
+    &.card.encore {
+        height: 30px;
+    }
 }
-#setlist .card.encore{
+
+#setlist .card.encore {
     height: 30px;
 }
 
@@ -319,11 +335,11 @@ header {
 }
 
 #share-x-button:hover {
-    background-color: rgb(29, 161, 242); /* Xのブランドカラー */
+    background-color: rgb(29, 161, 242);
 }
 
 #share-facebook-button:hover {
-    background-color: rgb(59, 89, 152); /* Facebookのブランドカラー */
+    background-color: rgb(59, 89, 152);
 }
 
 #share-native-button:hover {

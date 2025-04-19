@@ -58,7 +58,7 @@ const ctSongs = [
     { 
         id: 7,
         title: "WAO！アオハル！",
-        shortName:"ｗAOハル", 
+        shortName:"WAOハル", 
         release: "2023/09/27",
         image: "https://img.youtube.com/vi/KBG59gtjHSQ/hqdefault.jpg",
         link: "https://www.youtube.com/watch?v=KBG59gtjHSQ"
@@ -108,8 +108,8 @@ const ctSongs = [
         title: "レイドバックジャーニー", 
         shortName:"レイドバック",
         release: "2024/06/19",
-        image: "https://img.youtube.com/vi/9HKbo1FstOE/hqdefault.jpg",
-        link: "https://www.youtube.com/watch?v=9HKbo1FstOE"
+        image: "https://img.youtube.com/vi/FDgbygxAAR8/hqdefault.jpg",
+        link: "https://www.youtube.com/watch?v=FDgbygxAAR8"
     },
     { 
         id: 14,
