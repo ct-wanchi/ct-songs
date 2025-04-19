@@ -12,6 +12,7 @@ header {
     background-color: rgb(183, 202, 216);
     font-size: 20px;
     font-weight: bold;
+    font-style: italic;
     letter-spacing: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
@@ -106,9 +107,12 @@ header {
     border-top: 1px solid rgb(103, 147, 172);
     border-bottom: 1px solid rgb(103, 147, 172);
     margin: 0;
-    cursor: grab;
     position: relative;
 
+    .draggable{
+        cursor:grab;
+    }
+    
     .drag-icon {
         margin-left: auto;
         font-family: 'Material Icons';
@@ -118,7 +122,7 @@ header {
         transition: opacity 0.3s ease;
         display: flex;
         align-items: center;
-        padding: 0 5px;
+        padding: 5px;
         height: 100%;
         box-sizing: border-box;
 
@@ -160,35 +164,67 @@ header {
 
 #setlist-footer {
     font-size: 16px;
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     padding: 10px;
     margin-bottom: 4px;
     text-align: center;
     align-items: center;
     display: flex;
+    justify-content: center;
+    gap: 0; /* 一体感のためgapを0に */
 }
 
+/* 一体化した入力欄とボタン */
 #setlist-title {
     font-size: 16px;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    align-items: center;
-    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 10px 16px;
+    border: 1.5px solid rgb(103, 147, 172);
+    border-right: none; /* ボタンとの境界線を消す */
+    border-radius: 18px 0 0 18px; /* 右端を角丸にしない */
+    background: #fff;
+    color: #2a3a4a;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-right: 0; /* ボタンと隙間なし */
+    font-family: inherit;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+#setlist-title:focus {
+    border-color: rgb(183, 202, 216);
+    box-shadow: 0 0 0 3px rgba(103, 147, 172, 0.18);
+    background: #f7fbfd;
 }
 
 #create-setlist-button {
-    margin-left: 2px;
-    width: 100px;
-    padding: 10px;
-    background-color: rgb(103, 147, 172);
-    color: #ffffff;
-    border: 1px solid rgb(183, 202, 216);
-    border-radius: 16px;
+    margin-left: 0;
+    width: 110px;
+    padding: 10px 0;
+    background: rgb(103, 147, 172);
+    color: #fff;
+    border: 1.5px solid rgb(103, 147, 172);
+    border-left: none; /* 入力欄との境界線を消す */
+    border-radius: 0 18px 18px 0; /* 左端を角丸にしない */
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.12);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    outline: none;
+    height: 44px; /* 入力欄の高さに揃える */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#create-setlist-button:hover, #create-setlist-button:focus {
+    background: rgb(83, 127, 152);
+    box-shadow: 0 4px 16px rgba(103, 147, 172, 0.18);
+    transform: translateY(-2px) scale(1.03);
 }
 
 #setlist .card {

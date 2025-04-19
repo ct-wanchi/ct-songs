@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pull: 'clone',
             put: true
         },
-        handle: '.drag-icon',
+        handle: '.draggable',
         draggable: '.card',
         sort: false,
         onAdd: (evt) => {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         sort: true,
         draggable: '.card',
-        handle: '.card',
+        handle: '.draggable',
         onAdd: updateCardNumbers,
         onChange: updateCardNumbers,
         onEnd: updateCardNumbers
@@ -52,14 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `setlist.html?data=${compressedData}`;
     });
 
+    // 追加: タイトル入力欄で全選択
+    const setlistTitleInput = document.getElementById("setlist-title");
+    setlistTitleInput.addEventListener("focus", function() {
+        this.select();
+    });
+
     function createSongListCard(song) {
         const songListCard = document.createElement("div");
         songListCard.className = "card";
         songListCard.dataset.songId = song.id;
         songListCard.innerHTML = `
-            <span class="drag-icon">drag_indicator</span>
+            <span class="drag-icon draggable">drag_indicator</span>
             <div class="card-content">
-                <span class="card-number"></span>
+                <span class="card-number draggable"></span>
                 <a href="${song.link}" target="_blank" rel="noopener noreferrer">
                     <img src="${song.image}" alt="${song.title}">
                     <span class="play-icon"></span>
