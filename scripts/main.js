@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
         songListCard.className = "card";
         songListCard.dataset.songId = song.id;
         songListCard.innerHTML = `
-            <span class="drag-icon draggable">drag_indicator</span>
             <div class="card-content">
                 <span class="card-number draggable"></span>
                 <a href="${song.link}" target="_blank" rel="noopener noreferrer">
@@ -73,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="card-shortName">${song.shortName}</span>
                 <span class="card-title">${song.title}</span>
             </div>
+            <span class="drag-icon draggable">drag_indicator</span>
         `;
         return songListCard;
     }
@@ -82,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
         songListCard.className = "card encore";
         songListCard.dataset.songId = 999;
         songListCard.innerHTML = `
-            <span class="drag-icon">drag_indicator</span>
             <div class="card-content">
                 <span class="card-shortName">Encore</span>
                 <span class="card-title">Encore</span>
             </div>
+            <span class="drag-icon draggable">drag_indicator</span>
         `;
         return songListCard;
     }
