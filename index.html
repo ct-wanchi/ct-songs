@@ -4,30 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CANDY TUNE Set List Maker</title>
+    <title>CANDY TUNE Music Lists</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/site.css">
 </head>
 
 <body>
     <header>
-        CANDY TUNE Set List Maker
+        CANDY TUNE Music Lists
     </header>
-    <div class="container">
-        <div id="song-list"></div>
-        <div id="setlist-container">
-            <div id="setlist"></div>
+    <div class="body-container">
+        <div id="description">
+            <h3>CANDY TUNEの楽曲からリストを作るサイトです。</h3>
+            <p>曲を選んで、並べて、シェアするだけ！</p>
+            <div id="description-list">
+                <ul>
+                    <li>ライブのセットリスト</li>
+                    <li>好きな曲ランキング</li>
+                    <li>おすすめプレイリスト</li>
+                    <li>打線も組めます</li>
+                </ul>
+            </div>
         </div>
-        <div id="setlist-footer">
-            <input type="text" id="setlist-title" value="My Setlist" />
-            <button id="create-setlist-button">作成</button>
+        <a href="edit.html" id="try-create-button">作ってみる</a>
+        <div id="setlists">
+            <h3>セットリスト</h3>
+            <div class="setlist-item">
+                <a
+                    href="setlist.html?d=N4IgLglmA2CmIC4SFkGQwQyGSGQhgyFCGQPwyDsGQJ7NBzBkGUjQLd9AkhkBFfdYwfwZB9BhABoQB7AJwBNZPEwnAK6w2AZ3YA7AOZjEAbVARuiAIwB2NgAdEADgC+LJSoSqADNsQBmQ8bUAWSwgCstkMrUAmJ+bcfTuk4AnH4mAGxOYaGI3iA6CPbRLk6eSUFO6mlB6XGIZkkWuaZJqhFFqqkAuvpAA">
+                    きゃんちゅーの曲で打線組んでみた
+                </a>
+            </div>
+            <h3>ランキング・おすすめプレイリスト</h3>
+            <div class="setlist-item">
+                <a href="setlist.html?setlist=example2">Example Setlist 2</a>
+            </div>
+            <div class="setlist-item">
+                <a href="setlist.html?setlist=example3">Example Setlist 3</a>
+            </div>
+            <div class="setlist-item">
+                <a href="setlist.html?setlist=example4">Example Setlist 4</a>
+            </div>
+            <h3>きゃんちゅー曲打線</h3>
+            <div class="setlist-item">
+                <a
+                    href="setlist.html?d=N4IgLglmA2CmIC4SFkGQwQyGSGQhgyFCGQPwyDsGQJ7NBzBkGUjQLd9AkhkBFfdYwfwZB9BhABoQB7AJwBNZPEwnAK6w2AZ3YA7AOZjEAbVARuiAIwB2NgAdEADgC+LJSoSqADNsQBmQ8bUAWSwgCstkMrUAmJ+bcfTuk4AnH4mAGxOYaGI3iA6CPbRLk6eSUFO6mlB6XGIZkkWuaZJqhFFqqkAuvpAA">
+                    きゃんちゅーの曲で打線組んでみた
+                </a>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/songs.js"></script>
-
 </body>
 
 </html>

@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         draggable: '.card',
         sort: false,
         onAdd: (evt) => {
-            //if (evt.from === setlist) {
-                evt.item.remove();
-            //}
+            evt.item.remove();
         }
     });
 
@@ -32,27 +30,52 @@ document.addEventListener("DOMContentLoaded", () => {
         onEnd: updateCardNumbers
     });
 
+    const batteryOrderToggle = document.getElementById("battery-order");
+
+    function updatePositionVisibility() {
+        const useOrder = batteryOrderToggle.checked;
+        document.querySelectorAll('.card-position').forEach(sel => {
+            sel.style.display = useOrder ? "" : "none";
+        });
+        document.querySelectorAll('.card.encore').forEach(sel => {
+            sel.querySelector('.card-title').textContent = useOrder ? "投手" : "Encore";
+            sel.querySelector('.card-shortName').textContent = useOrder ? "投手" : "Encore";
+        });
+    }
+
+    batteryOrderToggle.addEventListener("change", updatePositionVisibility);
+
     ctSongs.forEach(song => {
         songList.appendChild(createSongListCard(song));
     });
     songList.appendChild(createEncoreCard());
+
     setlist.innerHTML = "";
+
+    updatePositionVisibility();
 
     const createSetlistButton = document.getElementById("create-setlist-button");
     createSetlistButton.addEventListener("click", () => {
         const setlistTitle = document.getElementById("setlist-title").value;
-        const setlistItems = Array.from(setlist.querySelectorAll('.card')).map(card => parseInt(card.dataset.songId, 10));
+        const setlistItems = Array.from(setlist.querySelectorAll('.card')).map(card => { 
+            const positionSelect = card.querySelector('.card-position');
+            const position= positionSelect ? parseInt(positionSelect.value, 10) : 0;
+            return { 
+                id: parseInt(card.dataset.songId, 10),
+                p: position
+            };
+        });
 
         const setlistData = {
             title: setlistTitle,
+            order: batteryOrderToggle.checked,
             songs: setlistItems
         };
 
         const compressedData = LZString.compressToEncodedURIComponent(JSON.stringify(setlistData));
-        window.location.href = `setlist.html?data=${compressedData}`;
+        window.location.href = `setlist.html?d=${compressedData}`;
     });
 
-    // 追加: タイトル入力欄で全選択
     const setlistTitleInput = document.getElementById("setlist-title");
     setlistTitleInput.addEventListener("focus", function() {
         this.select();
@@ -65,6 +88,20 @@ document.addEventListener("DOMContentLoaded", () => {
         songListCard.innerHTML = `
             <div class="card-content">
                 <span class="card-number draggable"></span>
+                <select class="card-position" name="position" value="1">
+                    <option value="1">先発</option>    
+                    <option value="2">捕手</option>
+                    <option value="3">一塁</option>
+                    <option value="4">二塁</option>
+                    <option value="5">三塁</option>
+                    <option value="6">遊撃</option>
+                    <option value="7">左翼</option>
+                    <option value="8">中堅</option>
+                    <option value="9">右翼</option>
+                    <option value="10">DH</option>
+                    <option value="11">中継</option>    
+                    <option value="12">抑え</option>
+                </select>
                 <a href="${song.link}" target="_blank" rel="noopener noreferrer">
                     <img src="${song.image}" alt="${song.title}">
                     <span class="play-icon"></span>
@@ -90,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         return songListCard;
     }
-
+    
     function updateCardNumbers() {
         const cards = setlist.querySelectorAll('.card');
         let encoreCardFound = false;

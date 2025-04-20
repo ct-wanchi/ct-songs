@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANDY TUNE Music Lists</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/site.css">
+</head>
+
+<body>
+    <header>
+        CANDY TUNE Music Lists
+    </header>
+    <div class="container">
+
+        <div id="song-list"></div>
+        <div id="setlist-container">
+            <div id="setlist"></div>
+        </div>
+        <div class="toggle-container">
+            <span class="toggle-label-text">打線を組む</span>
+            <label class="toggle-button-1" for="battery-order">
+                <input type="checkbox" id="battery-order" />
+            </label>
+        </div>
+        <div id="setlist-footer">
+            <input type="text" id="setlist-title" value="My Setlist" />
+            <button id="create-setlist-button">作成</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>
+    <script src="./scripts/edit.js"></script>
+    <script src="./scripts/songs.js"></script>
+
+</body>
+
+</html>
