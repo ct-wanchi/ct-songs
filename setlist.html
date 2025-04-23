@@ -11,20 +11,26 @@
 
 <body>
     <header>
-        CANDY TUNE Music Lists
+        <a href="index.html">CANDY TUNE Music Lists</a>
     </header>
     <div id="main-container">
         <div id="sharelist-header"></div>
         <div id="sharelist-container">
             <div id="sharelist"></div>
-            <div id="share-buttons">
-                <button id="share-setlist-button">
+            <div id="sharelist-footer">
+                <a href="edit.html" id="try-create-button" class="sharelist-button">
+                    <span class="material-icons">create</span>作ってみる
+                </a>
+                </button>
+                <button id="share-setlist-button" class="sharelist-button">
                     <span class="material-icons">link</span>URLをコピー
                 </button>
-                <button id="share-native-button">
+                <button id="share-native-button" class="sharelist-button">
                     <span class="material-icons">upload</span>共有
                 </button>
+                
             </div>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>

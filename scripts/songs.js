@@ -148,7 +148,7 @@ const ctSongs = [
         title: "推し♡好き♡しんどい", 
         shortName:"推し♡好き♡",
         release: "2025/04/23",
-        image: "https://img.youtube.com/vi/7-K5vb_cQiA/hqdefault.jpg",
-        link: "https://www.youtube.com/watch?v=7-K5vb_cQiA"
+        image: "https://img.youtube.com/vi/sRQccRV9s5w/hqdefault.jpg",
+        link: "https://www.youtube.com/watch?v=sRQccRV9s5w"
     }
 ];

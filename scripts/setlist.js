@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const compressedData = params.get("d");
 
     if (!compressedData) {
-        document.getElementById("setlist-header").textContent = "セットリストが見つかりません";
+        document.getElementById("sharelist-header").textContent = "Music Listが見つかりません";
         return;
     }
 
@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (song) {
             const formattedNumber = (number++).toString().padStart(2, '0') + '.';
             const songElement = document.createElement("div");
-            songElement.className = "card";
+            const posisionHtml = enableBatteryOrder ? `<span class="card-position">${ positionsHash[item.p]}</span>` :"";            songElement.className = "card";
             songElement.innerHTML = `
                 <div class="card-content">
                     <span class="card-number">${formattedNumber}</span>
-                    <span class="card-position">${enableBatteryOrder ? positionsHash[item.p] : ""}</span>
+                    ${posisionHtml}
                     <a href="${song.link}" target="_blank" rel="noopener noreferrer">
                     <img src="${song.image}" alt="${song.title}">
                     <span class="play-icon"></span>

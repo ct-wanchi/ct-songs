@@ -468,36 +468,47 @@ header {
     margin-left: 12px;
 }
 
-#share-setlist-button {
-    margin-left: 10px;
-    padding: 8px 16px;
+
+.sharelist-button {
+    margin: 0;
+    padding: 6px 12px;
     background-color: rgb(103, 147, 172);
-    color: #ffffff;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
+    transition: background-color 0.2s, box-shadow 0.2s;
+    gap: 4px;
+    
+
+    .material-icons {
+        font-size: 14px;
+    }
 }
 
-#share-setlist-button:hover {
-    background-color: rgb(83, 127, 152);
-}
-
+#share-setlist-button,
 #share-native-button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    background-color: rgb(103, 147, 172);
-    color: #ffffff;
+    background-color: rgb(183, 202, 216);
+    color: #2a3a4a;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
 }
 
-#share-native-button:hover {
-    background-color: rgb(83, 127, 152);
+#share-setlist-button:hover,
+#share-setlist-button:focus,
+#share-native-button:hover,
+#share-native-button:focus {
+    background-color: #b2c0ce;
+    color: #2a3a4a;
+    box-shadow: 0 4px 16px rgba(103, 147, 172, 0.18);
+    text-decoration: none;
 }
 
 .toggle-button-1 {
@@ -623,20 +634,24 @@ header {
     box-sizing: border-box;
 }
 #try-create-button {
-    margin: 4px auto 0 auto;
-    padding: 6px 32px;
+    margin: 0;
     background-color: rgb(103, 147, 172);
     color: #ffffff;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     transition: background-color 0.3s ease, box-shadow 0.2s;
-    display: block;
+    display: flex;
+    align-items: center;
     text-align: center;
     text-decoration: none;
     box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
+
+    .material-icons {
+        font-size: 14px;
+    }
 }
 
 #try-create-button:hover {
@@ -644,13 +659,21 @@ header {
     box-shadow: 0 4px 16px rgba(103, 147, 172, 0.18);
     text-decoration: none;
 }
-#description h3,p{
+
+
+#description {
+    margin-bottom:8px;
+}
+#description h3{
+    font-size: 16px;
     text-align: center;
 }
+
 #description p{
     text-align: center;
     margin: 0;
     padding: 0;
+    font-size:14px;
 }
 #description-list {
     width: auto;
@@ -663,11 +686,75 @@ header {
  
 }
 
-#description ul li {
-    text-align: left;
-    width: 100%;
-    margin: 0;
+#sharelist-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom:16px;
 }
-#try-create-button {
+
+.edit-button {
+    margin: 0;
+    padding: 6px 32px;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
     text-align: center;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
+    width: auto;
+
+    .material-icons {
+        font-size: 14px;
+    }
+}
+
+.edit-button:hover {
+    background-color: rgb(83, 127, 152);
+    box-shadow: 0 4px 16px rgba(103, 147, 172, 0.18);
+    text-decoration: none;
+}
+
+.edit-button,
+#try-create-button {
+    min-width: 120px;
+    max-width: 200px;
+    width: auto;
+    margin: 0 auto;
+    padding: 6px 0;
+    background-color: rgb(103, 147, 172);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(103, 147, 172, 0.10);
+    gap: 4px;
+
+    .material-icons {
+        font-size: 14px;
+    }
+}
+
+.edit-button:hover,
+#try-create-button:hover {
+    background-color: rgb(83, 127, 152);
+    box-shadow: 0 4px 16px rgba(103, 147, 172, 0.18);
+    text-decoration: none;
 }
