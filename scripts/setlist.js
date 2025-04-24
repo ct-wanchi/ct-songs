@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 await navigator.share({
                     title: setlistData.title,
-                    text: setlistData.title,
+                    text: `${setlistData.title} #CNADYTUNE #きゃんむり`,
                     url: shareUrl
                 });
             } catch (error) {
